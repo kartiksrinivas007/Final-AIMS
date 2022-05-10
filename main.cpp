@@ -34,7 +34,7 @@ int main()
           case 2:
           {
               int s;
-              cout<<"#Enter Student Name"<<std::endl;
+              cout<<"#Enter Student ID"<<std::endl;
               Term();
               cin>>s;
               Student *k = d.getStudent(s);
@@ -60,6 +60,7 @@ int main()
       cout<<"#Enter 2 if you are a Student"<<std::endl;
       cout<<"#Enter 3 if you are a Teacher"<<std::endl;
       cout<<"--------------------------------ENTER - 1 TO EXIT -------------------"<<std::endl;
+      Term();
     }
     return 0;
 }

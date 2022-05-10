@@ -1,5 +1,8 @@
 #include "Database.h"
 
+void Database::Term(){
+    std::cout<<"~";
+}
 void Database::Initialize_database(){
 
     students.push_back(Student(15,"Kartik","Kartikrox101"));
@@ -86,9 +89,10 @@ void Database::ModeAdmin(Admin &alpha){
     int input;
     std::string inputstring;
     ShowAdmin();
-    std::cout<<"------------------Press -1 to exit------------------"<<std::endl;
+    std::cout<<"#Enter -1 to exit"<<std::endl;
     std::cout<<"#Enter 1 to Remove Student from Course\n#Enter 2 to Add Student to Course\n#Enter 3 to Add Course"<<std::endl;
     std::cout<<"#Enter 4 to Remove Course\n#Enter 5 to change Course Status\n#Enter 6 to Add New Student\n#Enter 7 to Remove Student"<<std::endl;
+    Term();
     while(std::cin>>input && input != -1){
 
         switch(input){
@@ -96,11 +100,13 @@ void Database::ModeAdmin(Admin &alpha){
             {
                 int s,c;
                 std::cout<<"Enter Course ID Exactly"<<std::endl;
+                Term();
                 std::cin>>c;
                 Course* k = getCourse(c);
                 if(k!= NULL)
                 {
                     std::cout<<"Enter Student ID"<<std::endl;
+                    Term();
                     std::cin>>s;
                     Student* j = getStudent(s);
                     if(j != NULL){
@@ -114,11 +120,13 @@ void Database::ModeAdmin(Admin &alpha){
             {
                 int s,c;
                 std::cout<<"Enter Course ID Exactly"<<std::endl;
+                Term();
                 std::cin>>c;
                 Course* k = getCourse(c);
                 if(k!= NULL)
                 {
                     std::cout<<"Enter Student ID"<<std::endl;
+                    Term();
                     std::cin>>s;
                     Student* j = getStudent(s);
                     if(j != NULL){
@@ -142,15 +150,18 @@ void Database::ModeAdmin(Admin &alpha){
                     if(l!= NULL)
                     {
                     std::cout<<"Enter Course ID"<<std::endl;
+                    Term();
                     int cc;
                     std::cin>>cc;
                     std::vector<Student>student_list;
                     std::cout<<"Enter Student List by Roll number , Enter \"-1\" to stop adding students"<<std::endl;
+                    Term();
                     int input2;
                     while(std::cin>>input2 && input2 != -1){
                         Student* j = getStudent(input2);
                         if(j != NULL){
                                         student_list.push_back(*j);
+                                        Term();
                                     }
                              
                     }
@@ -166,6 +177,7 @@ void Database::ModeAdmin(Admin &alpha){
             case 4:{
                 int c;
                 std::cout<<"Enter Course ID"<<std::endl;
+                Term();
                 std::cin>>c;
                 Course* tbr = getCourse(c);
                 if(tbr != NULL){
@@ -178,6 +190,7 @@ void Database::ModeAdmin(Admin &alpha){
             {
                 int c;
                 std::cout<<"Enter Course ID"<<std::endl;
+                Term();
                 std::cin>>c;
                 Course* tbr = getCourse(c);
                 if(tbr != NULL){
@@ -195,6 +208,7 @@ void Database::ModeAdmin(Admin &alpha){
                 std::cin.ignore();
                 getline (std::cin, name);
                 std::cout<<"Enter Student ID"<<std::endl;
+                Term();
                 std::cin>>rn;
                 Student s(rn,name,"Defualt_password");
                 alpha.Addstudent(students,s);
@@ -206,6 +220,7 @@ void Database::ModeAdmin(Admin &alpha){
             case 7:{
                 int rn;
                 std::cout<<"Enter Student ID"<<std::endl;
+                Term();
                 std::cin>>rn;
                 Student *s = getStudent(rn);
                 alpha.RemoveStudent(students,*s);
@@ -217,12 +232,14 @@ void Database::ModeAdmin(Admin &alpha){
     std::cout<<"------------------Press -1 to exit------------------"<<std::endl;
     std::cout<<"#Enter 1 to Remove Student from Course\n#Enter 2 to Add Student to Course\n#Enter 3 to Add Course"<<std::endl;
     std::cout<<"#Enter 4 to Remove Course\n#Enter 5 to Float Course\n#Enter 6 to Add New Student\n#Enter 7 to Remove Student"<<std::endl;
+    Term();
     }
 }
 void Database::ModeTeacher(Teacher &alpha){
     ShowTeacher(alpha);
     std::cout<<"------------------Press -1 to exit------------------"<<std::endl;
     std::cout<<"#Enter 1 to Change Course Grade"<<std::endl;
+    Term();
     int input;
     while(std::cin>>input && input != -1){
         switch(input){
@@ -230,12 +247,14 @@ void Database::ModeTeacher(Teacher &alpha){
             {
                 int rn;
                 std::cout<<"Enter Student ID(Roll Number)"<<std::endl;
+                Term();
                 std::cin>>rn;
                 Student *s = getStudent(rn);
                 Course *c = getCourse(alpha);
                 if(c!= NULL){
                     char grade;
                     std::cout<<"Enter New Grade"<<std::endl;
+                    Term();
                     std::cin>>grade;
                     c->gradeupdate(*s,grade);
                 }
@@ -243,6 +262,9 @@ void Database::ModeTeacher(Teacher &alpha){
                 break;
             }
         }
+    std::cout<<"------------------Press -1 to exit------------------"<<std::endl;
+    std::cout<<"#Enter 1 to Change Course Grade"<<std::endl;
+    Term();
     }
 }
 void Database::ModeStudent(Student &s){
@@ -250,12 +272,14 @@ void Database::ModeStudent(Student &s){
     std::cout<<"------------------Press -1 to exit------------------"<<std::endl;
     std::cout<<"#Enter 1 to  Regsiter For a Course"<<std::endl;
     std::cout<<"#Enter 2 to  De - register for a Course"<<std::endl;
+    Term();
     int input;
     while(std::cin>>input && input != -1){
         switch(input){
             case 1:{
                 int cc;
                 std::cout<<"Enter course ID"<<std::endl;
+                Term();
                 std::cin>>cc;
                 Course *k = getCourse(cc);
                 if( k != NULL){
@@ -268,6 +292,7 @@ void Database::ModeStudent(Student &s){
             {
                 int cc;
                 std::cout<<"Enter course ID"<<std::endl;
+                Term();
                 std::cin>>cc;
                 Course *k = getCourse(cc);
                 if(k != NULL)
@@ -282,6 +307,7 @@ void Database::ModeStudent(Student &s){
     std::cout<<"------------------Press -1 to exit------------------"<<std::endl;
     std::cout<<"#Enter 1 to  Regsiter For a Course"<<std::endl;
     std::cout<<"#Enter 2 to  De - register for a Course"<<std::endl;
+    Term();
 
     }
 

@@ -9,6 +9,7 @@ class Database{
             std::vector<Teacher>teachers;
             std::vector<Admin>admins;
         public:
+            void Term();
             void Initialize_database();
             void ShowDatabase();
             void ShowStudentGrades(Student &s);
