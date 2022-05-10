@@ -38,8 +38,10 @@ int main()
               Term();
               cin>>s;
               Student *k = d.getStudent(s);
+              if(k != NULL){
               d.ModeStudent(*k);
-              d.ShowAdmin();
+              }
+              d.ShowDatabase();
               break;
           }
           case 3:
@@ -49,8 +51,10 @@ int main()
               std::cin.ignore();
               getline(cin,t);
               Teacher *k = d.getTeacher(t);
+              if( k != NULL){
               d.ModeTeacher(*k);
-              d.ShowAdmin();
+              }
+              d.ShowDatabase();
               break;
 
           }

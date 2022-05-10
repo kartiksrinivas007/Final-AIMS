@@ -28,7 +28,9 @@ void Course::gradeupdate(Student &s,char a){
     }
 }
 void Course::showcourseInfo(){
-    std::cout<<"---------------"<<course_id<<"----------"<<course_instructor->user_name<<"------------------"<<std::endl;
+    std::cout<<"--------------------------"<<course_name<<"--------------------------------"<<std::endl;
+    std::cout<<"Instructor = "<<course_instructor->user_name<<std::endl;
+    std::cout<<"Course Code = "<<course_id<<std::endl;
     for (auto x: *(student_grades)){
         std::cout<<"Name = "<< x.first.user_name<<" |  Roll number = "<<x.first.roll_number<<" | Grade = "<<x.second<<std::endl;
     }

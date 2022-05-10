@@ -8,54 +8,53 @@ void Database::Initialize_database(){
     students.push_back(Student(15,"Kartik","Kartikrox101"));
     students.push_back(Student(16,"Ajit","Ajitrox101"));
     students.push_back(Student(63,"Tanmay","Tanmayrox101"));
+    students.push_back(Student(33,"Pranav Nayak","Pranavrox101"));
+    students.push_back(Student(55,"Kartheek Tammanba","Kartheekrox101"));
+    students.push_back(Student(22,"Poorvika C","poorvikarox101"));
+    students.push_back(Student(63,"Rachit","Rachitrox101"));
 
-    Teacher subruk("Subramanyam Kalyanasundaram","subruk123");
-    Teacher Nitin("Nitin Saurabh","Nitin123");
+    std::vector<Student>students_new({students[3],students[2],students[4]});
+
+    
+    Teacher subruk("Subruk","subruk123");
+    Teacher Nitin("Nitin","Nitin123");
+    Teacher MVP("MVP","mvprox101");
+    Teacher Aravind("Aravind","aravindisdabest101");
+    Teacher RakeshVenkat("Rakesh","Rakeshlovestotravel");
 
     teachers.push_back(subruk);
     teachers.push_back(Nitin);
-    teachers.push_back(Teacher("NR aravind", "Arurox102"));
+    teachers.push_back(Aravind);
+    teachers.push_back(MVP);
+    teachers.push_back(RakeshVenkat);
 
     courses.push_back(Course(2030,"TOC",subruk,students));
     courses.push_back(Course(2443,"Algorithms",Nitin,students));
-    // students[0].printstudent();
-    // courses[0].gradeupdate(students[0],'A');
-    // courses[0].showcourseInfo();
-    // courses[1].showcourseInfo();
-    // students.push_back(Student(24,"Anish","Anishrox101")); 
-    // //usee auto& for references !
-    // courses[0].Addstudent(students[3]);
-    // courses[0].showcourseInfo();
-    // courses[0].RemoveStudent(students[3]);
-    // students.pop_back();
-    // courses[0].showcourseInfo();
-    // Course Comput(5660, "Computational Number Theory",teachers[2],students);
-    // Student pruthvi(25, "Pruthviraj","pruthvilovestosing");
-      Admin Naresh("Naresh","Nareshrox101");
-      Admin Mahesh("Mahesh","Maheshrox101");
-      admins.push_back(Naresh);
-      admins.push_back(Mahesh);
-    // Naresh.Addcourse(courses, Comput);
-    // Naresh.Addstudent(Comput,pruthvi);
-    // courses[2].showcourseInfo();
-   // courses[1].showstudentInfo(students[0]);
-    //ModeAdmin(Naresh);
-    //ModeStudent(students[0]);
+    Course Comput(5660, "Computational Number Theory",Aravind,students_new);
+    courses.push_back(Comput);
+    Student pruthvi(25, "Pruthviraj","pruthvilovestosing");
+    students.push_back(pruthvi);
+    courses.push_back(Course(5342,"Quantum Computing",MVP,students));
+
+    Admin Naresh("Naresh","Nareshrox101");
+    Admin Mahesh("Mahesh","Maheshrox101");
+    admins.push_back(Naresh);
+    admins.push_back(Mahesh);
 }
 void Database::ShowAdmin(){
-    std::cout<<"###################Courses########################"<<std::endl<<std::endl;
+    std::cout<<"################### COURSES ########################"<<std::endl<<std::endl;
     for (auto &c : courses)
     {
         std::cout<<"------------------"<<c.course_name<<"--------------------- "<<std::endl;
-        std::cout<<"Name = "<<c.course_name<<" Prof = "<<c.course_instructor->user_name<<" ID =  "<<c.course_id<<" Status =  "<<c.course_status<<"  "<<std::endl;
-        std::cout<<"------------------Students--------------------- "<<std::endl;
+        std::cout<<"Name = "<<c.course_name<<" Professor = "<<c.course_instructor->user_name<<" ID =  "<<c.course_id<<" Status =  "<<c.course_status<<"  "<<std::endl;
+        std::cout<<"------------------ Students Under Course --------------------- "<<std::endl;
             for (auto sc : *c.student_grades){
                
                 sc.first.show_info();
             }
     }
     std::cout<<"---------------------------------------------- "<<std::endl;
-std::cout<<"------------------------------ALL STUDENTS -----------------------------"<<std::endl;
+std::cout<<"------------------------------ ALL STUDENTS -----------------------------"<<std::endl;
 for(auto s:students){
     s.printstudent();
 }
