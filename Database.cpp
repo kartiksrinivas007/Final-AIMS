@@ -53,12 +53,12 @@ void Database::ShowAdmin(){
                 sc.first.show_info();
             }
     }
-    std::cout<<"---------------------------------------------- "<<std::endl;
+    
 std::cout<<"------------------------------ ALL STUDENTS -----------------------------"<<std::endl;
 for(auto s:students){
     s.printstudent();
 }
-    
+    std::cout<<"---------------------------------------------- "<<std::endl;
 
 }
 void Database::ShowStudentGrades(Student &s){
@@ -73,7 +73,7 @@ void Database::ShowStudentGrades(Student &s){
            std::cout<<"Course Instructor - "<<c.course_instructor->user_name<<" || Course Name - "<< c.course_name<<" || Course ID "<<c.course_id<<std::endl;
        }
    }
-
+std::cout<<"---------------------------------------------- "<<std::endl;
 
 }
 void Database::ShowTeacher(Teacher &t){
@@ -82,6 +82,7 @@ void Database::ShowTeacher(Teacher &t){
             c.showcourseInfo();
        }
    }
+   std::cout<<"---------------------------------------------- "<<std::endl;
 }
 
 void Database::ModeAdmin(Admin &alpha){
@@ -110,6 +111,8 @@ void Database::ModeAdmin(Admin &alpha){
                     Student* j = getStudent(s);
                     if(j != NULL){
                             alpha.RemoveStudent(*k, *j);
+                            std::cout<<"Student Removed Successfully"<<std::endl;
+
                     }
                 }
                 ShowAdmin();
@@ -130,6 +133,8 @@ void Database::ModeAdmin(Admin &alpha){
                     Student* j = getStudent(s);
                     if(j != NULL){
                             alpha.Addstudent(*k, *j);
+                            std::cout<<"Student Added Successfully"<<std::endl;
+
                     }
                 }
                 ShowAdmin();
@@ -166,6 +171,7 @@ void Database::ModeAdmin(Admin &alpha){
                     }
                     Course C(cc,c,*l,student_list);
                     alpha.Addcourse(courses,C);  
+                    std::cout<<"Course Sucessfully Created"<<std::endl;
                     }                                       
                     
                 
@@ -181,6 +187,7 @@ void Database::ModeAdmin(Admin &alpha){
                 Course* tbr = getCourse(c);
                 if(tbr != NULL){
                         alpha.RemoveCourse(courses, *tbr);
+                        std::cout<<"Course Sucessfully removed"<<std::endl;
                 }
                 ShowAdmin();
                 break;
@@ -194,6 +201,7 @@ void Database::ModeAdmin(Admin &alpha){
                 Course* tbr = getCourse(c);
                 if(tbr != NULL){
                         alpha.changestatus(*tbr,true);
+                        std::cout<<"Sucessfully Floated"<<std::endl;
                 }
                 ShowAdmin();
                 break;
@@ -209,8 +217,9 @@ void Database::ModeAdmin(Admin &alpha){
                 std::cout<<"Enter Student ID"<<std::endl;
                 Term();
                 std::cin>>rn;
-                Student s(rn,name,"Defualt_password");
+                Student s(rn,name,"Default_password");
                 alpha.Addstudent(students,s);
+                std::cout<<"Student Sucessfully added"<<std::endl;
                 ShowAdmin();
                 break;
             }
@@ -223,6 +232,7 @@ void Database::ModeAdmin(Admin &alpha){
                 std::cin>>rn;
                 Student *s = getStudent(rn);
                 alpha.RemoveStudent(students,*s);
+                std::cout<<"Student Sucessfully Removed"<<std::endl;
                 ShowAdmin();
                 break;
             }
@@ -256,6 +266,7 @@ void Database::ModeTeacher(Teacher &alpha){
                     Term();
                     std::cin>>grade;
                     c->gradeupdate(*s,grade);
+                    std::cout<<"Student Grade updated"<<std::endl;
                 }
                 ShowTeacher(alpha);
                 break;
@@ -283,6 +294,7 @@ void Database::ModeStudent(Student &s){
                 Course *k = getCourse(cc);
                 if( k != NULL){
                 k->Addstudent(s);
+                std::cout<<"Sucessfully Registered"<<std::endl;
                 }
                 ShowStudentGrades(s);
                 break;
@@ -297,6 +309,7 @@ void Database::ModeStudent(Student &s){
                 if(k != NULL)
                 {
                 k->RemoveStudent(s);
+                std::cout<<"Successfully de-registered"<<std::endl;
                 }
                 ShowStudentGrades(s);
                 break;
@@ -355,6 +368,10 @@ void Database::ShowDatabase(){
     std::cout<<"############## STUDENTS #################\n"<<std::endl;
     for(auto &s :students){
         s.printstudent();
+    }
+    std::cout<<"############# TEACHERS #################\n"<<std::endl;
+    for(auto &t :teachers){
+        std::cout<<"Name = "<<t.user_name<<std::endl;
     }
     std::cout<<"---------------------------------------------------------\n\n";
 
